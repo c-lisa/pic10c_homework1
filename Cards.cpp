@@ -1,10 +1,10 @@
 /**************************************
 @file Cards.cpp
-@brief Contains class definitions for interface of a simple Card class.
+@brief Contains class definitions for interface of a simple Card class. 
 @author Lisa Chiang
 @date April 22, 2017
 
-Includes class definitions for class Card, class Hand, class Player.
+Includes class definitions for class Card, class Hand, class Player. 
 ************************************* */
 
 #include "cards.h"
@@ -17,71 +17,71 @@ Includes class definitions for class Card, class Hand, class Player.
 
 /* *************************************************
 @file Cards.cpp
-@brief Contains class definitions the Card class, which includes the ranks and suits of cards in the game of Siete Y Medio
+@brief Contains class definitions the Card class, which includes the ranks and suits of cards in the game of Siete Y Medio 
 @author Lisa Chiang
 @date April 22, 2017
 ************************************************* */
 
 //Card Constructors
-/**@brief Card Default Constructor
+/**@brief Card Default Constructor 
 
-Randomly assigns a suit and rank
+Randomly assigns a suit and rank 
 
-@param No parameters.
-@return No returns.
+@param No parameters. 
+@return No returns. 
 */
 Card::Card() {
 	int r = 1 + (rand() % 4); //4 suits possible 
 	switch (r) //matches r (assigned randomly) with cases below
 	{
-	case 1: suit = OROS; break; //example, if r = 1, suit is oros 
-	case 2: suit = COPAS; break;
-	case 3: suit = ESPADAS; break;
-	case 4: suit = BASTOS; break;
-	default: break; //default is exit 
+		case 1: suit = OROS; break; //example, if r = 1, suit is oros 
+		case 2: suit = COPAS; break;
+		case 3: suit = ESPADAS; break;
+		case 4: suit = BASTOS; break;
+		default: break; //default is exit 
 	}
 	r = 1 + (rand() % 10); //10 possible ranks {1, 2, 3, 4, 5, 6, 7, 1/2, 1/2, 1/2}
 	switch (r)
 	{
-	case  1: rank = AS; break;
-	case  2: rank = DOS; break;
-	case  3: rank = TRES; break;
-	case  4: rank = CUATRO; break;
-	case  5: rank = CINCO; break;
-	case  6: rank = SEIS; break;
-	case  7: rank = SIETE; break;
-	case  8: rank = SOTA; break;
-	case  9: rank = CABALLO; break;
-	case 10: rank = REY; break;
-	default: break;
+		case  1: rank = AS; break;
+		case  2: rank = DOS; break;
+		case  3: rank = TRES; break;
+		case  4: rank = CUATRO; break;
+		case  5: rank = CINCO; break;
+		case  6: rank = SEIS; break;
+		case  7: rank = SIETE; break;
+		case  8: rank = SOTA; break;
+		case  9: rank = CABALLO; break;
+		case 10: rank = REY; break;
+		default: break;
 	}
 }
 
 //Card Accessors
 /**@ brief Get Spanish Suit
 
-Returns a string with the suit of the card in Spanish.
+Returns a string with the suit of the card in Spanish. 
 
-@param No parameters.
-@return Returns a string which is the suit in Spanish.
+@param No parameters. 
+@return Returns a string which is the suit in Spanish. 
 */
 std::string Card::get_spanish_suit() const {
 	std::string suitName;
 	switch (suit) //basically return what the contructor assigned the suit to be but in string terms 
 	{
-	case OROS:
-		suitName = "oros";
-		break;
-	case COPAS:
-		suitName = "copas";
-		break;
-	case ESPADAS:
-		suitName = "espadas";
-		break;
-	case BASTOS:
-		suitName = "bastos";
-		break;
-	default: break;
+		case OROS:
+			suitName = "oros"; 
+			break;
+		case COPAS:
+			suitName = "copas";
+			break;
+		case ESPADAS:
+			suitName = "espadas";
+			break;
+		case BASTOS:
+			suitName = "bastos";
+			break;
+		default: break;
 	}
 	return suitName; //return Spanish name 
 }
@@ -94,41 +94,41 @@ Returns a string with the rank of the card in Spanish.
 */
 std::string Card::get_spanish_rank() const {
 	std::string rankName;
-	switch (rank)
+	switch (rank) 
 	{
-	case AS:
-		rankName = "As";
-		break;
-	case DOS:
-		rankName = "Dos";
-		break;
-	case TRES:
-		rankName = "Tres";
-		break;
-	case CUATRO:
-		rankName = "Cuatro";
-		break;
-	case CINCO:
-		rankName = "Cinco";
-		break;
-	case SEIS:
-		rankName = "Seis";
-		break;
-	case SIETE:
-		rankName = "Siete";
-		break;
-	case SOTA:
-		rankName = "Sota";
-		break;
-	case CABALLO:
-		rankName = "Caballo";
-		break;
-	case REY:
-		rankName = "Rey";
-		break;
-	default: break;
+		case AS:
+			rankName = "As";
+			break;
+		case DOS:
+			rankName = "Dos";
+			break;
+		case TRES:
+			rankName = "Tres";
+			break;
+		case CUATRO:
+			rankName = "Cuatro";
+			break;
+		case CINCO:
+			rankName = "Cinco";
+			break;
+		case SEIS:
+			rankName = "Seis";
+			break;
+		case SIETE:
+			rankName = "Siete";
+			break;
+		case SOTA:
+			rankName = "Sota";
+			break;
+		case CABALLO:
+			rankName = "Caballo";
+			break;
+		case REY:
+			rankName = "Rey";
+			break;
+		default: break;
 	}
-
+	
 	return rankName;
 }
 /**@ brief Get English Suit
@@ -140,21 +140,21 @@ Returns a string with the suit of the card in English.
 */
 std::string Card::get_english_suit() const {
 	std::string suitName;
-	switch (suit)
+	switch (suit) 
 	{
-	case OROS:
-		suitName = "coins";
-		break;
-	case COPAS:
-		suitName = "cups";
-		break;
-	case ESPADAS:
-		suitName = "swords";
-		break;
-	case BASTOS:
-		suitName = "clubs";
-		break;
-	default: break;
+		case OROS:
+			suitName = "coins";
+			break;
+		case COPAS:
+			suitName = "cups";
+			break;
+		case ESPADAS:
+			suitName = "swords";
+			break;
+		case BASTOS:
+			suitName = "clubs";
+			break;
+		default: break;
 	}
 	return suitName; //return English name 
 }
@@ -205,21 +205,21 @@ std::string Card::get_english_rank() const {
 }
 /**@ brief Get Rank
 
-Returns an int which is the rank.
+Returns an int which is the rank. 
 
 @param No parameters.
 @return Returns the rank as an int.
 */
 int Card::get_rank() const {
-
+	
 	return static_cast<int>(rank) + 1;
 }
 /**@ brief < Operator
 
-Compares two cards and returns true if implicit is smaller.
+Compares two cards and returns true if implicit is smaller. 
 
-@param card2 is the Card that is being compared against the implicit Card.
-@return Returns true if implicit is less than card2 and false otherwise.
+@param card2 is the Card that is being compared against the implicit Card. 
+@return Returns true if implicit is less than card2 and false otherwise. 
 */
 bool Card::operator < (Card card2) const {
 	return rank < card2.rank;
@@ -227,7 +227,7 @@ bool Card::operator < (Card card2) const {
 
 /* *************************************************
 @file Hand.cpp
-@brief Contains class definitions for player's current hand, which includes whatever Cards the player has drawn.
+@brief Contains class definitions for player's current hand, which includes whatever Cards the player has drawn. 
 @author Lisa Chiang
 @date April 22, 2017
 ************************************************* */
@@ -241,7 +241,7 @@ Blank Constructor
 */
 Hand::Hand()
 {
-	;
+	; 
 }
 /**@ brief Drawing Cards
 
@@ -252,12 +252,12 @@ Draws a card and pushes back into hand.
 */
 void Hand::draw_card()
 {
-	Card current;
+	Card current; 
 	hand.push_back(current);
 }
 /**@ brief Printing Current Card
 
-Prints current card with english and spanish translations.
+Prints current card with english and spanish translations. 
 
 @param No parameters.
 @return Returns nothing.
@@ -271,7 +271,7 @@ void Hand::print_curr_card()
 }
 /**@ brief Viewing Entire Hand
 
-Displays all the cards in current hand.
+Displays all the cards in current hand. 
 
 @param No parameters.
 @return Returns nothing.
@@ -280,12 +280,37 @@ void Hand::view_hand()
 {
 	for (int i = 0; i < hand.size(); i++)
 	{
-		std::cout << "\t" << hand[i].get_spanish_rank() << " de " << hand[i].get_spanish_suit()
-			<< "\t" << "(" << hand[i].get_english_rank() << " of " << hand[i].get_english_suit() << ").";
-		std::cout << std::endl;
+		std::cout << "\t" << hand[i].get_spanish_rank() << " de " << hand[i].get_spanish_suit() 
+			<< "\t" << "(" << hand[i].get_english_rank() << " of " << hand[i].get_english_suit() << ")."; 
+		std::cout << std::endl; 
 	}
 }
-/**@ brief Getting Total Hand
+/**@ brief Viewing Specific Card
+
+Looks at the English and Spanish versions of the card at a specific index. 
+
+@param index is the card we want to look at it in the hand. 
+@return Returns a string which includes the English and Spanish translations of the card. 
+*/
+std::string Hand::get_spec_card(int index)
+{
+	Card current = hand[index - 1]; 
+	std::string return_this; 
+	return_this = ("\t" + current.get_spanish_rank() + " de " + current.get_spanish_suit() + "\t(" + current.get_english_rank() + " of " + current.get_english_suit() + ").");
+	return return_this; 		
+}
+/**@ brief Number of Cards in hand 
+
+Gives the number of cards in the hand currently. 
+
+@param No parameters.
+@return Returns an int which is the current number of cards in the hand. 
+*/
+int Hand::get_num_cards()
+{
+	return (hand.size()); 
+}
+/**@ brief Getting Total Hand 
 
 Adds up the total in hand and returns a double.
 
@@ -295,7 +320,7 @@ Adds up the total in hand and returns a double.
 double Hand::get_total_hand()
 {
 	int num_of_cards = hand.size() - 1; //if size is 5, i = 4
-	double sum = 0;
+	double sum = 0; 
 
 	for (int i = 0; i <= num_of_cards; ++i)
 	{
@@ -305,10 +330,10 @@ double Hand::get_total_hand()
 		}
 		else
 		{
-			sum += 0.5;
-		}
+			sum += 0.5; 
+		}	 
 	}
-	return sum;
+	return sum; 
 }
 /**@ brief Clearing the Hand
 
@@ -319,28 +344,28 @@ Resets hand for a new round
 */
 void Hand::clear_hand()
 {
-	Hand A;
-	hand = A.hand;
+	Hand A; 
+	hand = A.hand; 
 }
 
 /* *************************************************
 @file Player.cpp
 @brief Contains class definitions for the Player class, which keeps track of how much money the Player has throughout
-the game.
+the game. 
 @author Lisa Chiang
 @date April 22, 2017
 ************************************************* */
 //Constructors
 /**@ brief Player default constructor
 
-Sets the money initially to $100.
+Sets the money initially to $100. 
 
 @param No parameters.
 @return Returns nothing.
 */
 Player::Player()
 {
-	money = 100;
+	money = 100; 
 }
 /**@ brief Player constructor
 
@@ -351,31 +376,31 @@ Sets the money initially to int m.
 */
 Player::Player(int m)
 {
-	money = m;
+	money = m; 
 }
 
 //Accessors
 /**@ brief Get Money
 
-Tells you how much money the player currently has.
+Tells you how much money the player currently has. 
 
 @param No parameters.
 @return Returns an int which is the amount of money the player has.
 */
 int Player::get_money() const
 {
-	return money;
+	return money; 
 }
 /**@ brief Increasing the Money
 
-Adds the money won from the bet to current money.
+Adds the money won from the bet to current money. 
 
 @param m is how much money is added.
 @return Returns nothing.
 */
 void Player::won_money(int m)
 {
-	money += m;
+	money += m; 
 }
 /**@ brief Decreasing the Money
 
@@ -386,5 +411,5 @@ Subtracts the money lost from the bet from current money.
 */
 void Player::lost_money(int m)
 {
-	money -= m;
+	money -= m; 
 }
