@@ -12,6 +12,42 @@
 #include <ctime>
 #include <cstdlib>
 #include "cards.h"
+// Global constants (if any)
+// Non member functions declarations (if any)
+// Non member functions implementations (if any)
+
+/**@ brief Outputting to Log File
+
+Outputs the current round's results to the text file.
+
+@param game_log is the output stream we are outputting results to
+@param game_number is the round number currently being played
+@param money_left is how much money the player has left as of the current round
+@param bet is how much moneythe player bet that round
+@param Player is the Hand of the user
+@param Dealer is the Hand of the dealer
+@return Returns nothing.
+*/
+void filling_log_file(std::ofstream& game_log, int game_nmber, int money_left, int bet, Hand Player, Hand Dealer)
+{
+	game_log << "-----------------------------------------------" << std::endl << std::endl;
+	game_log << "Game number: " << game_nmber << "\tMoney left: $" << money_left << std::endl;
+	game_log << "Bet: " << bet << std::endl << std::endl;
+	game_log << "Your cards: " << std::endl;
+	for (int i = 1; i <= Player.get_num_cards(); i++)
+	{
+		game_log << Player.get_spec_card(i);
+		game_log << std::endl;
+	}
+	game_log << "Your total: " << Player.get_total_hand() << "." << std::endl << std::endl;
+	game_log << "Dealer's cards: " << std::endl;
+	for (int i = 1; i <= Dealer.get_num_cards(); i++)
+	{
+		game_log << Dealer.get_spec_card(i);
+		game_log << std::endl;
+	}
+	game_log << "Dealer's total: " << Player.get_total_hand() << "." << std::endl << std::endl;
+}
 
 int main()
 {
@@ -20,7 +56,9 @@ int main()
 	int bet = 0; //how much you bet
 	bool cont = true; //whether or not to continue 
 	std::string y_n; //whether or not to draw
-	
+	int game_number = 0;
+	std::ofstream outputData("gamelog.txt");
+
 	//initializing Players (money) and Hand (cards)
 	Player You(100); Player Dealer(100);
 	Hand Your_hand; Hand Dealer_hand;
@@ -85,7 +123,7 @@ int main()
 		Dealer_hand.view_hand(); //view hand  
 		std::cout << std::endl << "The dealer's total is " << Dealer_hand.get_total_hand() << "." << std::endl << std::endl; //total
 
-		//continue to draw for dealer while dealer's total is less than player's OR dealer's total is less than 5.5 
+																															 //continue to draw for dealer while dealer's total is less than player's OR dealer's total is less than 5.5 
 		while (Dealer_hand.get_total_hand() < Your_hand.get_total_hand() || Dealer_hand.get_total_hand() <= 5.5)
 		{
 			std::cout << "New Card:" << "\t" << std::endl;
@@ -133,10 +171,30 @@ int main()
 
 		std::cout << std::endl << std::endl;
 
+		//outputting resuls to text file 
+		++game_number;
+		filling_log_file(outputData, game_number, You.get_money(), bet, Your_hand, Dealer_hand);
+
 		//reset 
 		Your_hand.clear_hand(); Dealer_hand.clear_hand();
 		cont = true;
 	}
-		
+
+	//the end results 
+	if (You.get_money() <= 0)
+	{
+		std::cout << "You have $0. GAME OVER!" << std::endl;
+		std::cout << "Come back when you have more money." << std::endl << std::endl;
+		std::cout << "Bye!" << std::endl;
+	}
+	else if (dealer_loss > 900)
+	{
+		std::cout << "Congratulations. You beat the casino!" << std::endl << std::endl;
+		std::cout << "Bye!" << std::endl;
+	}
+
+	outputData << "-----------------------------------------------";
+	outputData.close();
+
 	return 0;
 }
