@@ -52,5 +52,52 @@ private:
 	rank_t rank;
 };
 
+/* *************************************************
+@file Hand.h
+@brief Contains class declarations for player's current hand, which includes whatever Cards the player has drawn.
+@author Lisa Chiang
+@date April 22, 2017
+************************************************* */
+class Hand {
+public:
+	//Constructor
+	Hand();
+
+	//Mutators
+	void draw_card();
+	void clear_hand();
+
+	//Accessors
+	void print_curr_card();
+	void view_hand();
+	double get_total_hand();
+
+private:
+	std::vector<Card> hand;
+};
+
+/* *************************************************
+@file Player.h
+@brief Contains class declarations for the Player class, which keeps track of how much money the Player has throughout
+the game.
+@author Lisa Chiang
+@date April 22, 2017
+************************************************* */
+class Player {
+public:
+	//Constructors
+	Player();
+	Player(int m);
+
+	//Accessors
+	int get_money() const;
+
+	//Mutators
+	void won_money(int m);
+	void lost_money(int m);
+
+private:
+	int money;
+};
 
 #endif
