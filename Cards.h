@@ -1,10 +1,10 @@
 /**************************************
 @file Cards.h
 @brief Contains class declarations for interface of a simple Card class
-@author Lisa Chiang
+@author Lisa Chiang 
 @date April 22, 2017
 
-This card class allows you to play Siete y Medio using class Cards, class Hand, class Player.
+This card class allows you to play Siete y Medio using class Cards, class Hand, class Player.  
 ************************************* */
 //rikis-salazar
 
@@ -17,14 +17,14 @@ This card class allows you to play Siete y Medio using class Cards, class Hand, 
 #include <fstream>
 
 //OROS = golden coins, spades = 1 / COPAS = cups || church, hearts = 2 / ESPADAS = swords || military, diamonds = 3 / BASTOS = peasants, clubs = 4
-enum suit_t { OROS, COPAS, ESPADAS, BASTOS };
-/* The values for this type start at 0 and increases by one until SIETE (7).
+enum suit_t {OROS, COPAS, ESPADAS, BASTOS};
+/* The values for this type start at 0 and increases by one until SIETE (7). 
 The rank reported by the function Card::get_rank() below is the value listed here plus one.
-E.g:
-The rank of AS is reported as    static_cast<int>(AS) + 1   = 0 + 1 =  1
-The rank of SOTA is reported as  static_cast<int>(SOTA) + 1 = 9 + 1 = 10
+	E.g: 
+	The rank of AS is reported as    static_cast<int>(AS) + 1   = 0 + 1 =  1
+	The rank of SOTA is reported as  static_cast<int>(SOTA) + 1 = 9 + 1 = 10
 */
-enum rank_t { AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, SOTA = 9, CABALLO = 10, REY = 11 };
+enum rank_t {AS, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, SOTA = 9, CABALLO = 10, REY = 11 };
 
 /* *************************************************
 @file Cards.h
@@ -43,7 +43,7 @@ public:
 	std::string get_english_suit() const;
 	std::string get_english_rank() const;
 	int get_rank() const;
-
+	
 	//Overloading Operators
 	bool operator < (Card card2) const;
 
@@ -62,18 +62,20 @@ class Hand {
 public:
 	//Constructor
 	Hand();
-
+	
 	//Mutators
 	void draw_card();
 	void clear_hand();
 
 	//Accessors
 	void print_curr_card();
-	void view_hand();
-	double get_total_hand();
-
+	void view_hand(); 
+	std::string get_spec_card(int index); 
+	int get_num_cards(); 
+	double get_total_hand(); 
+		
 private:
-	std::vector<Card> hand;
+	std::vector<Card> hand; 
 };
 
 /* *************************************************
@@ -86,16 +88,16 @@ the game.
 class Player {
 public:
 	//Constructors
-	Player();
-	Player(int m);
-
+	Player(); 
+	Player(int m); 
+	
 	//Accessors
-	int get_money() const;
+	int get_money() const; 
 
 	//Mutators
-	void won_money(int m);
-	void lost_money(int m);
-
+	void won_money(int m); 
+	void lost_money(int m); 
+		
 private:
 	int money;
 };
