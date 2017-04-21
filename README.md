@@ -1,5 +1,8 @@
 SIETE Y MEDIO
 
+AUTHOR
+Written by Lisa Chiang (clisa928@g.ucla.edu). 
+
 SYNOPSIS
 This project is a game called Siete Y Medio (seven and a half), which is the Spanish version of Black Jack or 21. Unlike the English version, there are only 10 cards. Cards 1-7 correspond to their numerical value while cards 10-12 are valued at 0.5.  The player's goal is to get as close to 7.5 as possible without busting (going over). If the player succeeds, he or she wins the money bet at the beginning of the round. Otherwise, the money is deducted. To win the game, the player has to win $1000 or the dealer has to lose $900. 
 
